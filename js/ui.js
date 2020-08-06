@@ -113,7 +113,7 @@ export default class Ui {
   }
 
   static displayWeatherModal(result) {
-    console.log(result);
+    // console.log(result);
     $('.modal-title').html(`Current Weather`);
     if (result.cod === '404') {
       $('.modal-body').html(`<p class="my-4">Sorry, ${result.message}</p>`);
@@ -140,7 +140,7 @@ export default class Ui {
   }
 
   static displayCurrencyModal(result) {
-    console.log(result);
+    // console.log(result);
     $('.modal-title').html('Exchange Rates');
     if (result.error) {
       $('.modal-body').html(`<p class="my-4">Sorry, ${result.error}<p>`);

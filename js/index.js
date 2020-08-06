@@ -3,7 +3,9 @@ import getData from './ajax.js';
 import Storage from './storage.js';
 
 // URL to php file
-const url = 'http://localhost/tuts/gazetteer/main.php';
+// on localhost use absolute path
+const url = '../main.php';
+
 
 $('document').ready(function () {
   if (navigator.geolocation) {
@@ -23,9 +25,7 @@ $('document').ready(function () {
       // ... else send request and display and save newly received country data in the web storage
       if (sessionStorage.currentLocation) {
         Ui.displayData(Storage.loadFromStorage(sessionStorage.currentLocation));
-        console.log();
       } else {
-        $('#display').html(Ui.loader);
         getData(url, $('#coords').serialize(), displayCurrentLocation);
       }
     });
@@ -39,10 +39,11 @@ $('document').ready(function () {
         // ... else send request fo get the country data
         const country = findCountryInStorage(localStorage.countries, $('#country').val());
         if (country) {
-          console.log(`Load ${country.name} data from storage`);
+          // console.log(`Load ${country.name} data from storage`);
           Ui.displayData(country);
           return;
         } else {
+          $('.modal-body').html(Ui.loader);
           getData(url, $('#country-form').serialize(), selectMatchingCountry);
           return;
         }
@@ -140,7 +141,7 @@ function selectMatchingCountry(result) {
   } else {
     result = result[0];
   }
-  console.log(result);
+  // console.log(result);
   Ui.displayData(result);
 }
 

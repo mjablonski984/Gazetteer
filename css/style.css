@@ -93,14 +93,14 @@ form#country-form input {
   border-color: transparent;
 }
 
+
 /* modals */
 .modal {
   background-color: rgba(0, 0, 0, 0.9) !important;
 }
 
 .modal-content {
-  margin: 15% auto auto;
-  width: 95%;
+  margin: 10% auto auto;
   max-width: 500px;
 }
 
@@ -111,7 +111,7 @@ form#country-form input {
 
 /* media */
 
-@media screen and (min-width: 765px) {
+@media screen and (min-width: 768px) {
   .country-name {
     flex-direction: row;
   }

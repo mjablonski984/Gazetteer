@@ -8,5 +8,9 @@ export default function getData(url, data, success) {
     crossDomain: true,
     dataType: 'json',
     data: data
-  }).done(success);
+  })
+    .done(success)
+    .fail(function (error) {
+      console.log(error.statusText);
+    });
 }

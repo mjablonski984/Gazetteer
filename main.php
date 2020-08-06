@@ -6,8 +6,10 @@ header('Access-Control-Allow-Headers: *');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: *');
 
-$geonamesUsername = "YOUR_USERNAME";
-$openWeatherApiKey = "YOUR_API_KEY";
+
+
+$geonamesUsername = "MY_USERNAME";
+$openWeatherApiKey = "OPEN_WEATHER_API_KEY";
 
 
 if (isset($_REQUEST['lat']) && isset($_REQUEST['lng'])){
@@ -54,6 +56,8 @@ function getData($uri) {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $uri);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); // Return instead of outputing directly
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
     curl_setopt($ch, CURLOPT_HEADER, 0); 
     $result = curl_exec($ch);
     

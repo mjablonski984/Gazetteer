@@ -74,7 +74,8 @@ export default class CreateMap {
         c => c.properties['ISO_A3'] === code
       )[0];
       const coordsArr = polyObj.geometry.coordinates;
-
+      // some arrays in cuntries.geojson are one level deeper (3 levels)
+      // - to  prevent errors and display polygon array must be flatten by 1 level
       try {
         map.displayGeoJsonPolygon(coordsArr, polyObj);
       } catch (error) {

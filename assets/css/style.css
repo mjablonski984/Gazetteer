@@ -111,6 +111,19 @@ form#country-form input {
 
 
 /* Main loader */
+.main-loader-container {
+  background-color: #4E5D6C;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+
+
 .main-loader {
   border: 16px solid #ffc39c; /* Light grey */
   border-top: 16px solid #bd5916;

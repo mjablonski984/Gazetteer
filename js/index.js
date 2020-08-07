@@ -8,7 +8,7 @@ const url = '../main.php';
 
 $('document').ready(function () {
   // Hide main loader
-  $('.main-loader').hide();
+  $('.main-loader-container').hide();
 
   if (navigator.geolocation) {
     let coords;

@@ -48,7 +48,6 @@ export default class CreateMap {
 
     this.marker = L.marker([lat, lng], { icon: icon }).addTo(this.map);
     this.marker.bindPopup(popup.toString());
-    // this.marker = L.marker([lat, lng]).addTo(this.map)
   }
 
   displayGeoJsonPolygon(array, obj) {
@@ -64,8 +63,12 @@ export default class CreateMap {
         coordinates: array
       }
     };
+
     this.polyline.remove();
     this.polyline = L.geoJSON(geojsonFeature).addTo(this.map);
+    // zoom in / out to fit country within the bounds of a map
+    this.map.fitBounds(this.polyline.getBounds(), { padding: [0, 0] });
+
   }
 
   getGeoJson(map, code) {
@@ -74,7 +77,7 @@ export default class CreateMap {
         c => c.properties['ISO_A3'] === code
       )[0];
       const coordsArr = polyObj.geometry.coordinates;
-      // some arrays in cuntries.geojson are one level deeper (3 levels)
+      // some arrays in countries.geojson are one level deeper (3 levels)
       // - to  prevent errors and display polygon array must be flatten by 1 level
       try {
         map.displayGeoJsonPolygon(coordsArr, polyObj);

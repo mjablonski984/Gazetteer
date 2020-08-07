@@ -6,8 +6,10 @@ import Storage from './storage.js';
 // on localhost use absolute path
 const url = '../main.php';
 
-
 $('document').ready(function () {
+  // Hide main loader
+  $('.main-loader').hide();
+
   if (navigator.geolocation) {
     let coords;
     navigator.geolocation.getCurrentPosition(pos => {
